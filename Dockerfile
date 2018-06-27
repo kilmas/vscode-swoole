@@ -10,11 +10,11 @@ RUN apt-get update && apt-get install -y \
 	wget \
 	git \
 	make \
-    gcc \
-    gdb \
-    libc6-devgcc \
-    gdb \
-    libc6-dev \
+    	gcc \
+    	gdb \
+    	libc6-devgcc \
+    	gdb \
+    	libc6-dev \
 	subversion \
 	supervisor \
 	--no-install-recommends \
