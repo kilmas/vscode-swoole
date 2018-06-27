@@ -1,0 +1,119 @@
+{
+    "version": "0.2.0",
+    "configurations": [
+        {
+            "name": "C++ Launch in already running docker container",
+            "type": "cppdbg",
+            "request": "launch",
+            "program": "php",
+            "args": ["/app/sd/bin/start_swoole_server.php", "start"],
+            "stopAtEntry": true,
+            "cwd": "/",
+            "environment": [
+                {
+                "DOCKER_TLS_VERIFY": "1",
+                "DOCKER_HOST=": "tcp://192.168.99.100:2376",
+                "DOCKER_CERT_PATH": "C:\\Users\\kilmas\\.docker\\machine\\machines\\default",
+                "DOCKER_MACHINE_NAME": "default",
+                "COMPOSE_CONVERT_WINDOWS_PATHS": "true",
+                "NO_PROXY": "192.168.99.100"
+                }
+            ],
+            "externalConsole": true,
+            "pipeTransport": {
+                "pipeCwd": "${workspaceRoot}",
+                "pipeProgram": "docker",
+                "pipeArgs": [
+                    "exec", 
+                    "-i", 
+                    "distribute", 
+                    "sh",
+                    "-c"
+                ],
+                "debuggerPath": "/usr/bin/gdb"
+            },
+            "sourceFileMap": {
+                "/app/swoole-src": "${workspaceRoot}",
+                "/app/php-7.1.16": "C:/Users/kilmas/Desktop/git/php-src",
+                "/build/glibc-Cl5G7W/glibc-2.23" : "C:/Users/kilmas/Desktop/git/glibc-2.23",
+                "/usr/include" : "C:/Users/kilmas/Desktop/git/include",
+                "/usr/lib/x86_64-linux-gnu" : "C:/Users/kilmas/Desktop/git/x86_64-linux-gnu",
+            },
+            "linux": {
+                "MIMode": "gdb",
+                "setupCommands": [
+                {
+                    "description": "Enable pretty-printing for gdb",
+                    "text": "-enable-pretty-printing",
+                    "ignoreFailures": true
+                }
+                ]
+            },
+            "osx": {
+                "MIMode": "lldb"
+            },
+            "windows": {
+                "MIMode": "gdb",
+                "setupCommands": [
+                {
+                    
+                    // "description": "Skip <path> files",
+                    // "text": "-interpreter-exec console \"skip -gfi <path-to-ignore>/**/*\"",
+                    "description": "Enable pretty-printing for gdb",
+                    "text": "-enable-pretty-printing",
+                    "ignoreFailures": true
+                }
+                ]
+            }
+        },
+        {
+            "name": "C++ Attach in docker container",
+            "type": "cppdbg",
+            "request": "attach",
+            "program": "php",
+            "processId": "${command:pickRemoteProcess}",
+            "pipeTransport": {
+                "pipeCwd": "${workspaceRoot}",
+                "pipeProgram": "docker",
+                "pipeArgs": [
+                    "exec", 
+                    "-i", 
+                    "distribute", 
+                    "sh",
+                    "-c"
+                ],
+                "debuggerPath": "/usr/bin/gdb"
+            },
+            "sourceFileMap": {
+                "/app/swoole-src": "${workspaceRoot}",
+                "/app/php-7.1.16": "C:/Users/kilmas/Desktop/git/php-src",
+                "/build/glibc-Cl5G7W/glibc-2.23" : "C:/Users/kilmas/Desktop/git/glibc-2.23",
+                "/usr/include" : "C:/Users/kilmas/Desktop/git/include",
+                "/usr/lib/x86_64-linux-gnu" : "C:/Users/kilmas/Desktop/git/x86_64-linux-gnu",
+            },
+            "linux": {
+                "MIMode": "gdb",
+                "setupCommands": [
+                {
+                    "description": "Enable pretty-printing for gdb",
+                    "text": "-enable-pretty-printing",
+                    "ignoreFailures": true
+                }
+                ]
+            },
+            "osx": {
+                "MIMode": "lldb"
+            },
+            "windows": {
+                "MIMode": "gdb",
+                "setupCommands": [
+                    {
+                        "description": "Enable pretty-printing for gdb",
+                        "text": "-enable-pretty-printing",
+                        "ignoreFailures": true
+                    }
+                ]
+            }
+        }
+    ]
+}
