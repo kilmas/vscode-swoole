@@ -6,7 +6,7 @@
             "type": "cppdbg",
             "request": "launch",
             "program": "php",
-            "args": ["/app/sd/bin/start_swoole_server.php", "start"],
+            "args": ["/app/vscode-swoole/start_swoole_server.php", "start"],
             "stopAtEntry": true,
             "cwd": "/",
             "environment": [
